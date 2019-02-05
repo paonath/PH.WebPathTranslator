@@ -1,4 +1,4 @@
-# PH.WebPathTranslator
+# PH.WebPathTranslator [![NuGet Badge](https://buildstats.info/nuget/PH.WebPathTranslator)](https://www.nuget.org/packages/PH.WebPathTranslator/)
 
 A tiny c# utility for Translate a web-relative path to a filesystem path (useful in scope where there is not a web server, for example inside services). The code is written in .NET C#. 
 
