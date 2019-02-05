@@ -2,6 +2,8 @@
 
 A tiny c# utility for Translate a web-relative path to a filesystem path (useful in scope where there is not a web server, for example inside services). The code is written in .NET C#. 
 
+The package is available on  [nuget](https://www.nuget.org/packages/PH.WebPathTranslator) 
+
 ## Feature
 
 -  Translate a Web-Relative path to FileSystem-Path:
