@@ -328,3 +328,4 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+BuildPackages/PH.WebPathTranslator.1.0.1.snupkg

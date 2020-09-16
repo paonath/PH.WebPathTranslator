@@ -55,6 +55,7 @@ namespace PH.WebPathTranslator
         [NotNull]
         public string ToFileSystemPath([NotNull] string webrelativePath)
         {
+            string initial = webrelativePath;
             if (string.IsNullOrEmpty(webrelativePath) || string.IsNullOrWhiteSpace(webrelativePath))
             {
                 throw new ArgumentException("Value cannot be null or empty or whitespace.", nameof(webrelativePath));
@@ -70,7 +71,7 @@ namespace PH.WebPathTranslator
                                     .Replace($"{Path.DirectorySeparatorChar}{Path.DirectorySeparatorChar}",
                                              $"{Path.DirectorySeparatorChar}");
            
-            _logger?.LogTrace($"Web-Path '{webrelativePath}' to '{pt}'");
+            _logger?.LogTrace($"Web-Path '{initial}' to '{pt}'");
             return pt;
 
         }
@@ -137,10 +138,11 @@ namespace PH.WebPathTranslator
                 throw new ArgumentException("Value cannot be null or empty or whitespace.", nameof(webrelativePath));
             }
 
-       
 
 
-            return new FileInfo(ToFileSystemPath(webrelativePath));
+            var fileInfo = new FileInfo(ToFileSystemPath(webrelativePath));
+            _logger?.LogTrace($"GetFile '{webrelativePath}' return '{fileInfo.FullName}' [Exists: {fileInfo.Exists}]");
+            return fileInfo;
         }
 
        
@@ -160,7 +162,9 @@ namespace PH.WebPathTranslator
             }
 
 
-            return new DirectoryInfo(ToFileSystemPath(webrelativePath));
+            var dir = new DirectoryInfo(ToFileSystemPath(webrelativePath));
+            _logger?.LogTrace($"GetDirectory '{webrelativePath}' return '{dir.FullName}' [Exists: {dir.Exists}]");
+            return dir;
         }
 
         #endregion
